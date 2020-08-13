@@ -1,0 +1,18 @@
+apiVersion: krew.googlecontainertools.github.com/v1alpha2
+kind: Plugin
+metadata:
+  name: psh
+spec:
+  version: "v0.1.0"
+  homepage: https://github.com/savonarola/pod-shell
+  shortDescription: "Interactively select pod/container and launch shell in it"
+  description: |
+    Select pod/container from current namespace with fzf
+    and try to run Bash shell in it
+  platforms:
+    - sha256: 60387b2041cde7a9b12865abfb1a871177acdf95d32646c03f2baad2ee945e5e
+      uri: https://github.com/savonarola/pod-shell/archive/0.1.0.tar.gz
+      bin: pod-shell-0.1.0/pod-shell
+      selector:
+        matchExpressions:
+        - {key: os, operator: In, values: [darwin, linux]}
