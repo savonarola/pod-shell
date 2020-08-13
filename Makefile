@@ -1,0 +1,3 @@
+test:
+	shellcheck pod-shell
+
