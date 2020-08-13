@@ -6,7 +6,7 @@ Utility for interactive selection of a Kubernetes pod and container to run shell
 
 ![Usage](doc/usage.png)
 
-If a pod has more them one container, one will be prompted to select it to.
+If a pod has more than one container, one will be prompted to select it too.
 
 # Installation
 
