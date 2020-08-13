@@ -6,7 +6,9 @@ set_commands() {
 }
 
 get_running_pods() {
-    "$KUBECTL" get pods --field-selector=status.phase=Running | cut -d " " -f 1 | tail -n +2
+    "$KUBECTL" get pods \
+        --field-selector=status.phase=Running  \
+        -o go-template='{{range .items}}{{.metadata.name}}{{"\n"}}{{end}}'
 }
 
 select_pod() {
@@ -22,7 +24,8 @@ select_pod() {
 get_containers() {
     local pod
     pod="$1"
-    "$KUBECTL" get pods "$pod" -o jsonpath='{.spec.containers[*].name}'  | tr ' ' '\n'
+    "$KUBECTL" get pods "$pod" \
+        -o go-template='{{range .spec.containers}}{{.name}}{{"\n"}}{{end}}'
 }
 
 select_container() {
